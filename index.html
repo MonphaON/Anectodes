@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nos Petits Secrets</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #fdfaf6;
+    color: #333;
+    overflow-x: hidden;
+  }
+  header {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #b77c9a;
+  }
+  .cards {
+    max-width: 900px;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .card {
+    position: relative;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    box-shadow: 0 4px 20px rgba(183,124,154,0.5);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  .card.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(183,124,154,0.7);
+  }
+  .card h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+    z-index: 2;
+  }
+  /* Icône play */
+  .play-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(183,124,154,0.8);
+    clip-path: polygon(25% 20%, 25% 80%, 75% 50%);
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+    animation: pulse 2s infinite;
+  }
+  .card:hover .play-icon {
+    background: rgba(183,124,154,1);
+    transform: translateY(-50%) scale(1.2);
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 5px rgba(183,124,154,0.7); }
+    50% { box-shadow: 0 0 15px rgba(183,124,154,1); }
+  }
+  /* Texte clique pour écouter */
+  .click-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 1.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0;
+    color: #ffe6f2;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+  .card:hover .click-hint {
+    opacity: 1;
+  }
+</style>
+<script>
+  const PASSWORD = 'LOVEUFRANCE'; // Modifie ce mot de passe ici
+  let tries = 3;
+
+  function askPassword() {
+    while(tries > 0) {
+      const userInput = prompt('Mot de passe requis pour accéder au site :');
+      if(userInput === null) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:50px;">Accès annulé</h1>';
+        return false;
+      }
+      if(userInput === PASSWORD) {
+        // Affiche le contenu et initialise les cartes visibles
+        document.body.style.display = 'block';
+        showCards();
+        return true;
+      } else {
+        tries--;
+        alert(`Mot de passe incorrect. Il vous reste ${tries} essai(s).`);
+      }
+    }
+    document.body.innerHTML = '<h1 style="text-align:center;margin-top:50px;">Accès refusé</h1>';
+    return false;
+  }
+
+  function showCards() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => card.classList.add('visible'));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.display = 'none'; // Cache le contenu au départ
+    askPassword();
+  });
+</script>
+</head>
+<body>
+<header>Nos Petits Secrets</header>
+<div class="cards">
+  <div class="card" style="background-image: url('image1_blur.jpg')" onclick="location.href='anecdote1.html'">
+    <h2>Le jour où j’ai su</h2>
+    <div class="play-icon" aria-label="Écouter"></div>
+    <div class="click-hint">Clique pour écouter</div>
+  </div>
+  <div class="card" style="background-image: url('image2_blur.jpg')" onclick="location.href='anecdote2.html'">
+    <h2>Notre fou rire à...</h2>
+    <div class="play-icon" aria-label="Écouter"></div>
+    <div class="click-hint">Clique pour écouter</div>
+  </div>
+  <!-- plus de cartes -->
+</div>
+</body>
+</html>
