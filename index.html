@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nos Petits Secrets</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet" />
+<title>Carton d'Amour Site</title>
+<link rel="icon" href="Liked.svg.png" type="image/png">
+<!-- Polices -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 <style>
   body {
     margin: 0; padding: 0;
@@ -20,6 +22,112 @@
     padding: 2rem 1rem;
     color: #b77c9a;
   }
+
+  /* UPDATES SECTION */
+  .updates-section {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    background-color: #fff6f6;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(183,124,154,0.2);
+  }
+  .updates-section h2 {
+    font-size: 1.5rem;
+    color: #b77c9a;
+    margin-bottom: 1rem;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+  }
+  #updates-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  #updates-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #eac7d4;
+    font-size: 1rem;
+  }
+
+  /* BOUTON + / - */
+  .toggle-button {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background-color: #b77c9a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+    user-select: none;
+  }
+  .toggle-button:hover {
+    transform: rotate(90deg);
+  }
+
+  /* PROGRAMME CADEAUX */
+  .gift-program {
+    margin-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  .gift-program.open {
+    max-height: 500px; /* assez grand pour tout afficher */
+  }
+  .gift-program ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+  }
+  .gift-program li {
+    padding: 0.4rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px dotted #e6b8cb;
+  }
+
+  /* VIDEO */
+  .video-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff0f6;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(183,124,154,0.25);
+    text-align: center;
+  }
+  .video-section h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #b77c9a;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 12px;
+  }
+
+  /* CARTES */
   .cards {
     max-width: 900px;
     margin: auto;
@@ -61,7 +169,6 @@
     text-shadow: 0 2px 5px rgba(0,0,0,0.6);
     z-index: 2;
   }
-  /* Icône play */
   .play-icon {
     position: absolute;
     right: 1.5rem;
@@ -83,7 +190,6 @@
     0%, 100% { box-shadow: 0 0 5px rgba(183,124,154,0.7); }
     50% { box-shadow: 0 0 15px rgba(183,124,154,1); }
   }
-  /* Texte clique pour écouter */
   .click-hint {
     position: absolute;
     bottom: 10px;
@@ -99,9 +205,73 @@
   .card:hover .click-hint {
     opacity: 1;
   }
+
+  /* DAILY NOTE - BLOC-NOTES CARRÉ */
+  .daily-note {
+    position: fixed;
+    top: 100px;
+    right: 20px; /* à gauche : left:20px; */
+    width: 250px;
+    padding: 1rem;
+    background: #fff8dc;
+    border: 2px dashed #deb887;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #6b4c3b;
+    border-radius: 10px;
+    z-index: 9999;
+    max-height: 250px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+  }
+  .daily-note:hover {
+    transform: scale(1.03);
+  }
+  .daily-note-title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #deb887;
+    padding-bottom: 0.3rem;
+  }
+
+  /* TIMER COMPTE À REBOURS */
+  #countdown-timer {
+    position: fixed;
+    top: 380px; /* sous le bloc-note */
+    right: 20px;
+    width: 250px;
+    padding: 1rem;
+    background: #fff0f6;
+    border: 2px dashed #e6b8cb;
+    box-shadow: 0 4px 10px rgba(183,124,154,0.2);
+    font-family: 'Quicksand', sans-serif;
+    color: #b73a6a;
+    border-radius: 10px;
+    z-index: 9999;
+    text-align: center;
+  }
+  #countdown-timer strong {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+  }
+  #countdown {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2.2rem;
+    letter-spacing: 0.1em;
+    color: #b73a6a;
+    text-shadow:
+      0 0 5px #f48fb1,
+      0 0 10px #f48fb1,
+      0 0 20px #f06292,
+      0 0 30px #ec407a;
+    user-select: none;
+  }
 </style>
 <script>
-  const PASSWORD = 'LOVEUFRANCE'; // Modifie ce mot de passe ici
+  const PASSWORD = 'LOVEUFRANCE';
   let tries = 3;
 
   function askPassword() {
@@ -112,7 +282,6 @@
         return false;
       }
       if(userInput === PASSWORD) {
-        // Affiche le contenu et initialise les cartes visibles
         document.body.style.display = 'block';
         showCards();
         return true;
@@ -131,13 +300,94 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    document.body.style.display = 'none'; // Cache le contenu au départ
+    document.body.style.display = 'none';
     askPassword();
+
+    // Toggle + / - pour la liste des cadeaux
+    const toggleBtn = document.getElementById('toggle-gifts');
+    const giftBox = document.getElementById('gift-program');
+
+    if (toggleBtn && giftBox) {
+      toggleBtn.addEventListener('click', () => {
+        giftBox.classList.toggle('open');
+        toggleBtn.textContent = giftBox.classList.contains('open') ? '−' : '+';
+      });
+    }
+
+    // Compte à rebours jusqu'au 27 août minuit (heure locale)
+    function updateCountdown() {
+      const now = new Date();
+      const target = new Date(now.getFullYear(), 7, 27, 0, 0, 0); // Mois 7 = août (0-based)
+      // Si la date est passée, cible année suivante
+      if (now > target) target.setFullYear(target.getFullYear() + 1);
+
+      const diff = target - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      const formatted = `${days}j ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+      document.getElementById('countdown').textContent = formatted;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   });
 </script>
 </head>
 <body>
 <header>Nos Petits Secrets</header>
+
+<!-- SECTION UPDATES -->
+<section class="updates-section">
+  <h2>🗓️ Update</h2>
+  <button class="toggle-button" id="toggle-gifts">+</button>
+  <ul id="updates-list">
+    <li><strong>2 août :</strong> Préparation du site terminée 💻🎁</li>
+    <li><strong>07 août :</strong> Premier jour aux USA 🇺🇸, les surprises t'attendent 🎧</li>
+    <li><strong>important :</strong> Ne clique pas sur le plus, essaye de te retenir si tu veux avoir encore des surprises💌</li>
+  </ul>
+  <div class="gift-program" id="gift-program">
+    <ul>
+      <li>📦 07 août : Lettre de départ + vidéo + Calendrier</li>
+      <li>🌸 08 août : Read me When you need me + Lettre</li>
+      <li>🥧 09 août : Petits Gâteaux + Lettre</li>
+      <li>💌 10 août : Carte Postale + Portrait personnalisé</li>
+      <li>🗼 11 août : Éventail Parisien + Lettre</li>
+      <li>💌 12 août : Journal + Lettre</li>
+      <li>💌 13 août : Carte postale</li>
+      <li>💍 14 août : Bracelets Brésilien + Lettre</li>
+      <li>💌 15 août : Carte Postale</li>
+      <li>🦟 16 août : Un truc contre les moustiques + Lettre</li>
+      <li>🥣 17 août : Pots de confiture + Lettre</li>
+      <li>💎 18 août : Galet en forme de cœur + Lettre</li>
+      <li>💌 19 août : Parfum de moi + Lettre</li>
+      <li>🥰 20 août : Cadeau des 7 Moisssss</li>
+      <li>📖 21 août : Anecdotes sur le site + Lettre</li>
+      <li>🧴 22 août : Cadeau Yves Rocher + Lettre</li>
+      <li>🏠 23 août : Maisonnette "Je t'aime" + Lettre</li>
+      <li>🧴 24 août : Flacon avec message roulé + Lettre</li>
+      <li>🎵 25 août : Playlist spotify + Lettre</li>
+      <li>💌 26 août : Lettre de retour</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION VIDÉO -->
+<section class="video-section">
+  <h2>🎥 Une petite vidéo rien que pour toi</h2>
+  <div class="video-wrapper">
+    <iframe 
+      src="https://www.youtube.com/embed/xRFLUSJRn38" 
+      title="Vidéo surprise" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- SECTION CARTES -->
 <div class="cards">
   <div class="card" style="background-image: url('image1_blur.jpg')" onclick="location.href='anecdote1.html'">
     <h2>Le jour où j’ai su</h2>
@@ -149,7 +399,24 @@
     <div class="play-icon" aria-label="Écouter"></div>
     <div class="click-hint">Clique pour écouter</div>
   </div>
-  <!-- plus de cartes -->
 </div>
+
+<!-- BLOC-NOTE QUOTIDIEN -->
+<div class="daily-note" role="complementary" aria-label="Mot du jour">
+  <div class="daily-note-title">Le mot du jour 💌</div>
+  <div class="daily-note-content">
+    Coucou mon amour,<br>
+    Aujourd’hui je pense encore très fort à toi.<br>
+    Tu es mon petit soleil. ☀️<br>
+    Je t’aime 💕
+  </div>
+</div>
+
+<!-- COMPTE À REBOURS -->
+<div id="countdown-timer" aria-live="polite" aria-atomic="true" role="timer">
+  <strong>Compte à rebours avant le 27 août :</strong>
+  <div id="countdown">Calcul en cours...</div>
+</div>
+
 </body>
 </html>
