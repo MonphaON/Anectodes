@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le jour où j’ai su</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fdfaf6;
+      font-family: 'Quicksand', sans-serif;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      padding: 1.5rem 1rem;
+      color: #b77c9a;
+      position: relative;
+      text-align: center;
+      border-bottom: 1px solid #e5d4d9;
+      background-color: #fff0f6;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      text-decoration: none;
+      color: #b77c9a;
+      font-weight: bold;
+      border: 2px solid #b77c9a;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #b77c9a;
+      color: white;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #b77c9a;
+      margin-bottom: 1.5rem;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(183, 124, 154, 0.3);
+      max-width: 100%;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-btn">&larr; Retour</a>
+    Message vidéo 1
+  </header>
+
+  <main>
+    <h2>🎥 Bonjouuuuur du matin 😘🥰</h2>
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/ht8fqIA6F-8" 
+        title="Vidéo surprise" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </main>
+
+  <footer>
+    Avec tout mon amour 💗
+  </footer>
+
+</body>
+</html>
